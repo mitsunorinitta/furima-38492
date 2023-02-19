@@ -33,7 +33,7 @@ has_many :purchase_records
 
 ### Association
 belongs_to :user
-belongs_to :purchase_record
+has_one :purchase_record
 
 
 ## Purchase_recordテーブル
@@ -46,7 +46,7 @@ belongs_to :purchase_record
 ### Association
 belongs_to :user
 belongs_to :item
-belongs_to :shipping_informations
+has_one :shipping_informations
 
 
 ## Shipping_informationsテーブル
