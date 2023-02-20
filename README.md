@@ -52,15 +52,15 @@ has_one :shipping_information
 
 ## Shipping_informationsテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| post_code        | string     | null: false                    |
-| prefectures      | string     | null: false                    |
-| municipalities   | string     | null: false                    |
-| house_number     | string     | null: false                    |
-| building_name    | string     |                                |
-| telephone_number | string     | null: false                    |
-| purchase_record  | references | null: false, foreign_key: true |
+| Column           | Type        | Options                        |
+| ---------------- | ----------- | ------------------------------ |
+| post_code        | string      | null: false                    |
+| region_origin_id | integer     | null: false                    |
+| municipalities   | string      | null: false                    |
+| house_number     | string      | null: false                    |
+| building_name    | string      |                                |
+| telephone_number | string      | null: false                    |
+| purchase_record  | references  | null: false, foreign_key: true |
 
 ### Association
 belongs_to :purchase_record
