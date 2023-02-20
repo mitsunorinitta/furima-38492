@@ -27,7 +27,7 @@ has_many :purchase_records
 | item_category_id   | integer | null: false                       |
 | item_condition_id  | integer | null: false                       |
 | shipping_charge_id | integer | null: false                       |
-| prefectures_id     | integer | null: false                       |
+| prefecture_id      | integer | null: false                       |
 | days_ship_id       | integer | null: false                       |
 | item_price         | integer | null: false                       |
 | user               | references | null: false, foreign_key: true |
@@ -55,7 +55,7 @@ has_one :shipping_information
 | Column           | Type        | Options                        |
 | ---------------- | ----------- | ------------------------------ |
 | post_code        | string      | null: false                    |
-| prefectures_id   | integer     | null: false                    |
+| prefecture_id    | integer     | null: false                    |
 | municipalities   | string      | null: false                    |
 | house_number     | string      | null: false                    |
 | building_name    | string      |                                |
