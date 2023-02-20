@@ -2,16 +2,16 @@
 
 ## Usersテーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| first_name       | string | null: false |
-| second_name      | string | null: false |
-| first_name_kana  | string | null: false |
-| second_name_kana | string | null: false |
-| birth_day        | date   | null: false |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| second_name        | string | null: false               |
+| first_name_kana    | string | null: false               |
+| second_name_kana   | string | null: false               |
+| birth_day          | date   | null: false               |
 
 ### Association
 has_many :items
@@ -20,16 +20,16 @@ has_many :purchase_records
 
 ## Itemsテーブル
 
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| item_name        | string  | null: false |
-| item_description | text    | null: false |
-| item_category    | string  | null: false |
-| item_condition   | string  | null: false |
-| shipping_charges | string  | null: false |
-| region_origin    | string  | null: false |
-| days_ship        | string  | null: false |
-| item_price       | integer | null: false |
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| item_name          | string  | null: false |
+| item_description   | text    | null: false |
+| item_category_id   | integer | null: false |
+| item_condition_id  | integer | null: false |
+| shipping_charge_id | integer | null: false |
+| region_origin_id   | integer | null: false |
+| days_ship_id       | integer | null: false |
+| item_price         | integer | null: false |
 
 ### Association
 belongs_to :user
