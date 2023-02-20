@@ -36,24 +36,24 @@ belongs_to :user
 has_one :purchase_record
 
 
-## Purchase_recordテーブル
+## Purchase_recordsテーブル
 
-| Column  | Type       | Options     |
-| ------- | ---------- | ----------- |
-| user_id | references | foreign_key: true |
-| item_id | references | foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 belongs_to :user
 belongs_to :item
-has_one :shipping_informations
+has_one :shipping_information
 
 
 ## Shipping_informationsテーブル
 
 | Column           | Type    | Options     |
 | ---------------- | ------- | ----------- |
-| post_code        | integer | null: false |
+| post_code        | string  | null: false |
 | prefectures      | string  | null: false |
 | municipalities   | string  | null: false |
 | house_number     | string  | null: false |
