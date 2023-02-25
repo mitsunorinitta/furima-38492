@@ -62,3 +62,5 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'pry-rails'
