@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :second_name_kana, presence: true
   validates :birth_day, presence: true
-  validates :image, presence: true
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates_format_of :password, with: PASSWORD_REGEX, message: 'には半角の英字と数字の両方を含めて設定してください' 

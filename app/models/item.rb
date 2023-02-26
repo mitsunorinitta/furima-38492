@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :prefecture_id, presence: true
   validates :days_ship_id, presence: true
   validates :item_price, presence: true
-  validates 
+  validates :image, presence: true
 
   belongs_to :user
   has_one_attached :image
