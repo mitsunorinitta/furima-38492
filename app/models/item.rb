@@ -1,14 +1,18 @@
 class Item < ApplicationRecord
 
-  validates :item_name, presence: true
-  validates :item_description, presence: true
-  validates :item_category_id, presence: true
-  validates :item_condition_id, presence: true
-  validates :shipping_charge_id, presence: true
-  validates :prefecture_id, presence: true
-  validates :days_ship_id, presence: true
-  validates :item_price, presence: true
-  validates :image, presence: true
+  with_options presence: true do
+    validates :item_name
+    validates :item_description
+    validates :item_category_id
+    validates :item_condition_id
+    validates :shipping_charge_id
+    validates :prefecture_id
+    validates :days_ship_id
+    validates :image
+
+    # 300円以上かつ9，999，999円以下で、半角数字でないと入力不可
+    validates :item_price, numericality: { greater_than_or_epual_to: 300, less_than_or_equal_to: 9_999_999 }
+  end
 
   #ジャンルの選択が「ーーー」のときは保存できないように設定
   validates :item_category_id, numericality: { other_than: 1 , message: "can't be blank" }
