@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーはログインページに促す
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :edit]
 
-  before_action :set_item, only: :show
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -22,6 +22,23 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+    # ログインしているユーザーと同一であればeditファイルが読み込まれる
+    if @item.user_id == current_user.id
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @item.update(item_params)
+    if @item.valid?
+      redirect_to item_path(item_params)
+    else
+      render 'edit'
+    end
   end
 
   private
