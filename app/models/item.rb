@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   with_options presence: true do
     validates :item_name
     validates :item_description
@@ -9,8 +8,8 @@ class Item < ApplicationRecord
     validates :item_price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   end
 
-  #ジャンルの選択が「ーーー」のときは保存できないように設定
-  validates :item_category_id, numericality: { other_than: 1 , message: "can't be blank" }
+  # ジャンルの選択が「ーーー」のときは保存できないように設定
+  validates :item_category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :item_condition_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :shipping_charge_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
