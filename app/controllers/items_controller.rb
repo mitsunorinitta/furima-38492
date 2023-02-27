@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   # ログインしていないユーザーはログインページに促す
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, except: [:index, :show]
 
   before_action :set_item, only: [:show, :edit, :update]
 
