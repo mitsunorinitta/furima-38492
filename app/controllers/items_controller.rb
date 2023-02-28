@@ -4,6 +4,10 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+  # ログインしているユーザーと同一であればeditファイルが読み込まれる
+  # ログインしているユーザーと同一であればデータを削除する
+  before_action :contributor_confirmation, only: [:edit, :destroy]
+
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -25,10 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # ログインしているユーザーと同一であればeditファイルが読み込まれる
-    return unless @item.user_id == current_user.id
-
-    redirect_to root_path
   end
 
   def update
@@ -41,8 +41,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id == current_user.id
-      @item.destroy
+    if @item.destroy
       redirect_to root_path
     else
       redirect_to root_path
@@ -58,5 +57,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @item.user
   end
 end
