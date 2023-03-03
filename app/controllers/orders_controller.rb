@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
+  before_action :transition_index, only: [:index, :create]
 
   def index
     @order_address = OrderAddress.new
@@ -43,7 +44,9 @@ class OrdersController < ApplicationController
     unless current_user != @item.user
       redirect_to root_path
     end
+  end
 
+  def transition_index
     unless @item.purchase_record == nil
       redirect_to root_path
     end
