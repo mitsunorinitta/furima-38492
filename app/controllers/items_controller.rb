@@ -8,6 +8,8 @@ class ItemsController < ApplicationController
   # ログインしているユーザーと同一であればデータを削除する
   before_action :contributor_confirmation, only: [:edit, :destroy]
 
+  before_action :transition_index, only: [:edit, :destroy]
+
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
@@ -58,5 +60,11 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to root_path unless current_user == @item.user
+  end
+
+  def transition_index
+    unless @item.purchase_record == nil
+      redirect_to root_path
+    end
   end
 end
