@@ -15,13 +15,8 @@ const pay = () => {
     e.preventDefault();
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
-        console.log(response);
-        console.error(`message: ${response.error.message}`);
-        console.error(`status: ${response.error.status}`);
-        console.error(`type: ${response.error.type}`);
       } else {
         const token = response.id;
-        console.log(token)
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} type="hidden" name='token'>`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
